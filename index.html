@@ -1,261 +1,198 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" class="dark scroll-smooth">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Stage Zero VC — Where Vision Wins Early</title>
-  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css"/>
 
-  <style>
-    :root {
-      --brand-hue: 215;
-      --accent: hsl(var(--brand-hue) 70% 52%);
-      --accent-light: hsl(var(--brand-hue) 70% 25%);
-      --accent-dark: hsl(var(--brand-hue) 70% 10%);
-    }
-
-    body {
-      background: #0c1118;
-      color: #f2f3f4;
-    }
-
-    header, section, footer {
-      padding-block: 4rem;
-    }
-
-    header {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    header h1 span {
-      color: var(--accent-light);
-    }
-
-    .criteria-grid, .advice-grid {
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 40rem) {
-      .criteria-grid { grid-template-columns: repeat(3, 1fr); }
-      .advice-grid   { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    .card {
-      border: 1px solid var(--accent-light);
-      border-radius: .75rem;
-      padding: 1.75rem 1.5rem;
-      background: #1a1f29;
-      box-shadow: 0 2px 4px hsl(var(--brand-hue) 60% 20% / .25);
-    }
-
-    footer {
-      text-align: center;
-      font-size: .9rem;
-      background: var(--accent-dark);
-      color: #eee;
-    }
-
-    footer a {
-      color: var(--accent);
-      text-decoration: underline;
-    }
-
-    .logo-wrap {
-      background: #fff;
-      padding: 0.25rem 0.5rem;
-      border-radius: 6px;
-      display: inline-block;
-    }
-  </style>
+  <!-- Tailwind (static CDN, no build) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#3b5adf',   /* accent */
+              light: '#4f7aff',     /* accent-light */
+              dark:  '#091120',     /* accent-dark / page bg */
+            },
+          },
+          fontFamily: {
+            mono: ['ui-monospace','SFMono-Regular','Menlo','monospace'],
+          },
+        },
+      },
+    };
+  </script>
 </head>
 
-<body>
-  <!-- HERO -->
-  <header>
-    <div class="container">
-      <nav>
-        <a href="#" class="contrast" aria-label="Home">
-          <span class="logo-wrap">
-            <img src="images/s0logo.png" alt="Stage Zero VC logo" style="height:2.2rem"/>
-          </span>
-        </a>
-        <ul>
-          <li><a href="#invest">Who We Invest In</a></li>
-          <li><a href="#advise">How We Advise</a></li>
-          <li><a href="#contact" role="button" class="secondary">LinkedIn</a></li>
-        </ul>
-      </nav>
+<body class="bg-brand-dark text-gray-100 antialiased">
+  <!-- HEADER -->
+  <header class="bg-brand">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex items-center justify-between">
+      <!-- Logo + Name -->
+      <a href="#" class="inline-flex items-center space-x-2">
+        <span class="bg-white rounded px-2 py-1">
+          <img src="images/s0logo.png" alt="Stage Zero VC logo" class="h-7 w-auto">
+        </span>
+        <span class="font-mono font-semibold tracking-wider text-lg">Stage Zero VC</span>
+      </a>
 
-      <h1 style="margin-top:5rem">
-        Turning <span>zero</span> into <span>win</span>
-      </h1>
-      <p class="lead">
-        Stage Zero is a collective of early believers — founders, operators, and angel investors backing bold ideas before they’re real.<br/>
-        We help you go from zero to MVP, launch to users, and earn your first conviction win.<br/>
-        <br/>
-        Where vision wins early. <strong>stagezero.win</strong>
-      </p>
-      <p><a href="#invest" role="button">Explore our thesis</a></p>
+      <!-- Hamburger -->
+      <button id="burger" class="sm:hidden p-2 rounded hover:bg-brand-light/20 focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+      <!-- Desktop nav -->
+      <nav class="hidden sm:flex space-x-8 font-medium text-lg">
+        <a href="#invest" class="hover:text-brand-light">Who We Invest In</a>
+        <a href="#advise" class="hover:text-brand-light">How We Advise</a>
+        <a href="#contact" class="hover:text-brand-light">LinkedIn</a>
+      </nav>
     </div>
+
+    <!-- Mobile nav -->
+    <nav id="mobileMenu" class="sm:hidden hidden px-4 pb-4 space-y-2 text-lg bg-brand/90 backdrop-blur-md">
+      <a href="#invest" class="block hover:text-brand-light">Who We Invest In</a>
+      <a href="#advise" class="block hover:text-brand-light">How We Advise</a>
+      <a href="#contact" class="block hover:text-brand-light">LinkedIn</a>
+    </nav>
   </header>
 
+  <!-- HERO -->
+  <section class="bg-brand text-center py-20">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight">
+        Turning <span class="text-brand-light">zero</span> into <span class="text-brand-light">win</span>
+      </h1>
+      <p class="mt-6 text-xl text-gray-100/90 leading-relaxed">
+        Stage Zero is a collective of early believers — founders, operators, and angel investors backing bold ideas before they’re real.<br/>
+        We help you go from zero to MVP, launch to users, and earn your first conviction win.<br/><br/>
+        Where vision wins early. <strong>stagezero.win</strong>
+      </p>
+      <a href="#invest" class="mt-10 inline-block bg-gray-100 text-brand font-semibold px-6 py-3 rounded hover:bg-gray-200">Explore our thesis</a>
+    </div>
+  </section>
+
   <!-- VISION -->
-  <section id="vision">
-    <div class="container">
-      <h2>Our Vision</h2>
-      <p class="lead">
-        We don’t connect money to ideas.  
-        We connect <strong>wisdom</strong> to <strong>energy</strong>—and when that fits, the money takes care of itself.
+  <section id="vision" class="py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">Our Vision</h2>
+      <p class="mb-12 text-lg text-gray-300">
+        We don’t connect money to ideas. We connect <strong>wisdom</strong> to <strong>energy</strong>—and when that fits, the money takes care of itself.
       </p>
 
+      <div class="space-y-8">
+        <!-- Existing cards preserved ➜ use Tailwind panel look -->
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">We Invest at Day Zero</h3>
+          <p>Stage Zero VC invests when it’s just you, a bold idea, and a dream worth chasing. We help you shape that into an MVP, get it in front of users, and build your early traction. No noise. Just execution.</p>
+        </div>
 
-      <div class="card">
-        <h3>We Invest at Day Zero</h3>
-        <p>
-          Stage Zero VC invests when it’s just you, a bold idea, and a dream worth chasing. 
-          We help you shape that into an MVP, get it in front of users, and build your early traction. 
-          No noise. Just execution.
-        </p>
-      </div>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">We Don't Fund Passengers</h3>
+          <p>We don’t do ego, pitch theatre, or over-polished decks. We back gritty builders solving real problems. Our capital comes with hard questions, honest feedback, and weekly hands-on support. That’s the deal.</p>
+        </div>
 
-      <div class="card">
-        <h3>We Don't Fund Passengers</h3>
-        <p>
-          We don’t do ego, pitch theatre, or over-polished decks. We back gritty builders solving real problems. 
-          Our capital comes with hard questions, honest feedback, and weekly hands-on support. That’s the deal.
-        </p>
-      </div>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">We Fix What’s Broken</h3>
+          <p>Most early-stage support in Australia is too slow, too vague, or too late. We show up when you’re still in the garage and help you ship, test, and iterate until you get your first users — and your first win.</p>
+        </div>
 
-      <div class="card">
-        <h3>We Fix What’s Broken</h3>
-        <p>
-          Most early-stage support in Australia is too slow, too vague, or too late. 
-          We show up when you’re still in the garage and help you ship, test, and iterate until you get your first users — and your first win.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>We Shape Founders</h3>
-        <p>
-          You don’t pitch us a fairytale — you bring us your willingness to build something meaningful. 
-          If you accept our challenge, we’ll help you turn zero into win. But only if you commit.
-        </p>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">We Shape Founders</h3>
+          <p>You don’t pitch us a fairytale — you bring us your willingness to build something meaningful. If you accept our challenge, we’ll help you turn zero into win. But only if you commit.</p>
+        </div>
       </div>
     </div>
   </section>
 
-<!-- IDEAS VS EXECUTION -->
-<section id="ideas" style="background:var(--accent-light);">
-  <div class="container">
-    <h2>Ideas vs Execution</h2>
-    <p class="lead">
-      Ideas float in the air—anyone can grab one.  What’s scarce is conviction
-      and the grit to turn that idea into something users love.
-    </p>
+  <!-- IDEAS VS EXECUTION -->
+  <section id="ideas" class="py-20 bg-brand-light/10">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">Ideas vs Execution</h2>
+      <p class="mb-12 text-lg text-gray-300">
+        Ideas float in the air—anyone can grab one.  What’s scarce is conviction and the grit to turn that idea into something users love.
+      </p>
 
-    <div class="criteria-grid">
-      <!-- Card 1 -->
-      <div class="card">
-        <h3>Ideas Are Everywhere</h3>
-        <p>
-          We don’t buy the myth of idea scarcity.  If you need us to sign an NDA
-          to hear yours, you’re probably not ready for the real work yet.
-        </p>
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">Ideas Are Everywhere</h3>
+          <p>We don’t buy the myth of idea scarcity.  If you need us to sign an NDA to hear yours, you’re probably not ready for the real work yet.</p>
+        </div>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">1 % Inspiration, 99 % Perspiration</h3>
+          <p>What matters is the 99 %: shipping, iterating, listening to users, and sweating the details.  That’s where we lean in with you.</p>
+        </div>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">Total Transparency</h3>
+          <p>Come prepared to share the whole playbook—why it’s different, how it wins, and where it’s weak.  If you can withstand candid critique, that’s a green flag for us.</p>
+        </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="card">
-        <h3>1 % Inspiration, 99 % Perspiration</h3>
-        <p>
-          What matters is the 99 %: shipping, iterating, listening to users,
-          and sweating the details.  That’s where we lean in with you.
-        </p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="card">
-        <h3>Total Transparency</h3>
-        <p>
-          Come prepared to share the whole playbook—why it’s different, how it
-          wins, and where it’s weak.  If you can withstand candid critique,
-          that’s a green flag for us.
-        </p>
-      </div>
+      <p class="mt-12 text-center text-gray-300">
+        Still guarding a “million-dollar idea”?  Prove it in the market, then let’s talk.<br/>
+        If you’re ready to build in the open and out-execute everyone else, we’re all ears.
+      </p>
     </div>
+  </section>
 
-    <p style="margin-top:2rem">
-      Still guarding a “million-dollar idea”?  Prove it in the market, then let’s talk.
-      If you’re ready to build in the open and out-execute everyone else, we’re all ears.
-    </p>
-  </div>
-</section>
+  <!-- WHO WE INVEST IN -->
+  <section id="invest" class="py-20">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">Who We Invest In</h2>
+      <p class="mb-12 text-lg text-gray-300">
+        We back founders who start with themselves: build one small product, ship it,
+        prove value, then grow.  Big slogans can wait—evidence comes first.
+      </p>
 
-
-<!-- WHO WE INVEST IN -->
-<section id="invest">
-  <div class="container">
-    <h2>Who We Invest In</h2>
-    <p class="lead">
-      We back founders who start with themselves: build one small product, ship it,
-      prove value, then grow.  Big slogans can wait—evidence comes first.
-    </p>
-
-    <div class="criteria-grid">
-      <div class="card">
-        <h3>Humble Builders</h3>
-        <p>
-          First-time or early founders willing to learn, take feedback, and change
-          their own habits before trying to change the world.
-        </p>
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">Humble Builders</h3>
+          <p>First-time or early founders willing to learn, take feedback, and change their own habits before trying to change the world.</p>
+        </div>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">Proof-First Teams</h3>
+          <p>You focus on a narrow problem, launch quickly, and collect real usage or revenue—no vanity metrics, no pitch-deck theatre.</p>
+        </div>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">Iterative Minds</h3>
+          <p>You value tight feedback loops, pivot fast, and treat advice as fuel, not friction.  Ambition tempered by evidence.</p>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Proof-First Teams</h3>
-        <p>
-          You focus on a narrow problem, launch quickly, and collect real usage or
-          revenue—no vanity metrics, no pitch-deck theatre.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Iterative Minds</h3>
-        <p>
-          You value tight feedback loops, pivot fast, and treat advice as fuel,
-          not friction.  Ambition tempered by evidence.
-        </p>
-      </div>
+      <p class="mt-12 text-center text-gray-300">
+        Still chasing moon-shots without proof? Build, ship, learn—then come back.<br/>
+        We’ll be here.
+      </p>
     </div>
-
-    <p style="margin-top:2rem">
-      Still chasing moon-shots without proof? Build, ship, learn—then come back.
-      We’ll be here.
-    </p>
-  </div>
-</section>
+  </section>
 
   <!-- HOW WE ADVISE -->
-  <section id="advise">
-    <div class="container">
-      <h2>How We Advise</h2>
-      <p class="lead">Capital is a commodity. Conviction &amp; sweat matter.</p>
+  <section id="advise" class="py-20 bg-brand-dark">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">How We Advise</h2>
+      <p class="mb-12 text-lg text-gray-300">Capital is a commodity. Conviction &amp; sweat matter.</p>
 
-      <div class="advice-grid">
-        <div class="card">
-          <h3>Product &amp; GTM Sprints</h3>
+      <div class="grid gap-8 md:grid-cols-2">
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">Product &amp; GTM Sprints</h3>
           <p>Weekly deep-dives with our operating partners to sharpen roadmap and storytelling.</p>
         </div>
-        <div class="card">
-          <h3>Founder Mental Model</h3>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">Founder Mental Model</h3>
           <p>Tactical coaching on founder-market fit, team culture, and early hiring.</p>
         </div>
-        <div class="card">
-          <h3>Fundraising Prep</h3>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">Fundraising Prep</h3>
           <p>Warm intros, deck refinement, and mock pitches to accelerate Seed &amp; beyond.</p>
         </div>
-        <div class="card">
-          <h3>Operator Network</h3>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">Operator Network</h3>
           <p>Instant access to domain experts and the Stage Zero guild of portfolio founders.</p>
         </div>
       </div>
@@ -263,103 +200,81 @@
   </section>
 
   <!-- OUR PROCESS -->
-<section id="process" style="background:var(--accent-dark);">
-  <div class="container">
-    <h2>Our Process</h2>
-    <p class="lead">
-      We always start with advice. Capital follows only when the partnership works.
-    </p>
+  <section id="process" class="py-20 bg-brand-light/5">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">Our Process</h2>
+      <p class="mb-12 text-lg text-gray-300">
+        We always start with advice. Capital follows only when the partnership works.
+      </p>
 
-    <div class="advice-grid">
-      <div class="card">
-        <h3>1. Advisory First</h3>
-        <p>
-          We join your advisory board (or stay independent) to understand the team, tech,
-          and trajectory—long before we talk term sheets.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>2. Build the Relationship</h3>
-        <p>
-          Weekly sessions, brutal honesty, clear KPIs. We give advice and watch
-          how quickly it turns into action.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>3. Earn the Cheque</h3>
-        <p>
-          If the guidance helps and you execute relentlessly, we invest.  
-          No follow-through? No funding. Simple.
-        </p>
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">1. Advisory First</h3>
+          <p>We join your advisory board (or stay independent) to understand the team, tech, and trajectory—long before we talk term sheets.</p>
+        </div>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">2. Build the Relationship</h3>
+          <p>Weekly sessions, brutal honesty, clear KPIs. We give advice and watch how quickly it turns into action.</p>
+        </div>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">3. Earn the Cheque</h3>
+          <p>If the guidance helps and you execute relentlessly, we invest. No follow-through? No funding. Simple.</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- JOIN THE COLLECTIVE -->
-<section id="join">
-  <div class="container">
-    <h2>Join the Collective</h2>
-    <p class="lead">
-      Stage Zero isn’t just founders and capital—it’s a guild of experienced
-      operators who still love the game but don’t want to start from scratch.
-    </p>
+  <section id="join" class="py-20 bg-brand-dark">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6">Join the Collective</h2>
+      <p class="mb-12 text-lg text-gray-300">
+        Stage Zero isn’t just founders and capital—it’s a guild of experienced operators who still love the game but don’t want to start from scratch.
+      </p>
 
-    <div class="criteria-grid">
-      <div class="card">
-        <h3>Seasoned Operators</h3>
-        <p>
-          Finance pros, BD closers, growth hackers, engineers, legal minds—if you
-          have battle scars and insights, founders need you.
-        </p>
+      <div class="grid gap-8 md:grid-cols-3">
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">Seasoned Operators</h3>
+          <p>Finance pros, BD closers, growth hackers, engineers, legal minds—if you have battle scars and insights, founders need you.</p>
+        </div>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">Mission-Driven Mentorship</h3>
+          <p>Share your playbooks, join advisory boards, or roll up your sleeves on specific sprints. Zero politics—just impact.</p>
+        </div>
+        <div class="bg-brand/30 p-6 rounded-lg shadow">
+          <h3 class="font-semibold text-xl mb-3">Capital Happens Naturally</h3>
+          <p>When advice clicks and the venture takes shape, money follows effortlessly. Great teams + great mentors = easy yes for investors.</p>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Mission-Driven Mentorship</h3>
-        <p>
-          Share your playbooks, join advisory boards, or roll up your sleeves on
-          specific sprints. Zero politics—just impact.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Capital Happens Naturally</h3>
-        <p>
-          When advice clicks and the venture takes shape, money follows
-          effortlessly. Great teams + great mentors = easy yes for investors.
-        </p>
-      </div>
+      <p class="mt-12 text-center text-gray-300">
+        Interested? DM us on <a href="https://linkedin.com/company/stage-zero-vc" target="_blank" class="underline hover:text-brand-light" rel="noopener">LinkedIn</a> and tell us how you’d like to help.
+      </p>
     </div>
-
-    <p style="margin-top:2rem">
-      Interested? DM us on
-      <a href="https://linkedin.com/company/stage-zero-vc" target="_blank" rel="noopener">LinkedIn</a>
-      and tell us how you’d like to help.
-    </p>
-  </div>
-</section>
-
-
+  </section>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <h2>Let’s Talk</h2>
-      <p class="lead">
+  <section id="contact" class="py-20">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6">Let’s Talk</h2>
+      <p class="text-lg text-gray-300">
         Building something bold?<br/>
-        Reach out via <a href="https://linkedin.com/company/stage-zero-vc" target="_blank" rel="noopener">our LinkedIn page</a> — we’d love to hear from you.
+        Reach out via <a href="https://linkedin.com/company/stage-zero-vc" target="_blank" class="underline hover:text-brand-light" rel="noopener">our LinkedIn page</a> — we’d love to hear from you.
       </p>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <p>© <span id="yr"></span> Stage Zero VC · <a href="https://linkedin.com/company/stage-zero-vc" target="_blank">LinkedIn</a></p>
+  <footer class="bg-brand py-6">
+    <p class="text-center text-gray-200 text-sm">
+      © <span id="yr"></span> Stage Zero VC · <a href="https://linkedin.com/company/stage-zero-vc" target="_blank" class="underline hover:text-brand-light" rel="noopener">LinkedIn</a>
+    </p>
   </footer>
 
+  <!-- JS: mobile toggle & year -->
   <script>
+    document.getElementById('burger').onclick = () =>
+      document.getElementById('mobileMenu').classList.toggle('hidden');
     document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
 </body>
