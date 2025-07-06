@@ -4,21 +4,17 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Stage Zero VC — Where Vision Wins Early</title>
-
-  <!-- Pico.css gives us a clean, lightweight base (1 minified CSS file) -->
   <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css"/>
 
   <style>
-    /* ===== Brand tweaks on top of Pico ===== */
     :root {
-      --brand-hue: 215;            /* adjust once, everything follows */
+      --brand-hue: 215;
       --accent: hsl(var(--brand-hue) 70% 52%);
       --accent-light: hsl(var(--brand-hue) 70% 95%);
       --accent-dark: hsl(var(--brand-hue) 70% 20%);
     }
-    header,
-    section,
-    footer { padding-block: 4rem; }
+
+    header, section, footer { padding-block: 4rem; }
 
     header {
       background: var(--accent);
@@ -35,7 +31,6 @@
       .advice-grid   { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* Subtle card look */
     .card {
       border: 1px solid var(--accent-light);
       border-radius: .75rem;
@@ -55,18 +50,17 @@
 </head>
 
 <body>
-  <!-- =============== HERO =============== -->
+  <!-- HERO -->
   <header>
     <div class="container">
       <nav>
         <a href="#" class="contrast" aria-label="Home">
-          <!-- Replace with your PNG/SVG -->
           <img src="logo.svg" alt="Stage Zero VC logo" style="height:2.2rem"/>
         </a>
         <ul>
           <li><a href="#invest">Who We Invest In</a></li>
           <li><a href="#advise">How We Advise</a></li>
-          <li><a href="#contact" role="button" class="secondary">Get in Touch</a></li>
+          <li><a href="#contact" role="button" class="secondary">LinkedIn</a></li>
         </ul>
       </nav>
 
@@ -81,7 +75,7 @@
     </div>
   </header>
 
-  <!-- =============== WHO WE INVEST IN =============== -->
+  <!-- WHO WE INVEST IN -->
   <section id="invest">
     <div class="container">
       <h2>Who We Invest In</h2>
@@ -104,7 +98,7 @@
     </div>
   </section>
 
-  <!-- =============== HOW WE ADVISE =============== -->
+  <!-- HOW WE ADVISE -->
   <section id="advise" style="background:var(--accent-light)">
     <div class="container">
       <h2>How We Advise</h2>
@@ -131,32 +125,23 @@
     </div>
   </section>
 
-  <!-- =============== CONTACT =============== -->
+  <!-- CONTACT -->
   <section id="contact">
     <div class="container">
       <h2>Let’s Talk</h2>
       <p class="lead">
-        Building something the world doesn’t believe in yet?<br/>
-        We’d love to be your first yes.
+        Building something bold?<br/>
+        Reach out via <a href="https://linkedin.com/company/stage-zero-vc" target="_blank" rel="noopener">our LinkedIn page</a> — we’d love to hear from you.
       </p>
-      <form action="https://formspree.io/f/your-endpoint" method="post">
-        <div class="grid">
-          <input type="text" name="name" placeholder="Your name" required>
-          <input type="email" name="email" placeholder="Your email" required>
-        </div>
-        <textarea name="message" placeholder="Tell us about your moonshot…" rows="4" required></textarea>
-        <button type="submit">Send</button>
-      </form>
     </div>
   </section>
 
-  <!-- =============== FOOTER =============== -->
+  <!-- FOOTER -->
   <footer>
-    <p>© <span id="yr"></span> Stage Zero VC. All rights reserved. · <a href="mailto:hello@stagezero.win">hello@stagezero.win</a></p>
+    <p>© <span id="yr"></span> Stage Zero VC · <a href="https://linkedin.com/company/stage-zero-vc" target="_blank">LinkedIn</a></p>
   </footer>
 
   <script>
-    // Simple year auto-update
     document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
 </body>
