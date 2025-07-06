@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Stage Zero VC — Where Vision Wins Early</title>
+
+  <!-- Pico.css gives us a clean, lightweight base (1 minified CSS file) -->
+  <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css"/>
+
+  <style>
+    /* ===== Brand tweaks on top of Pico ===== */
+    :root {
+      --brand-hue: 215;            /* adjust once, everything follows */
+      --accent: hsl(var(--brand-hue) 70% 52%);
+      --accent-light: hsl(var(--brand-hue) 70% 95%);
+      --accent-dark: hsl(var(--brand-hue) 70% 20%);
+    }
+    header,
+    section,
+    footer { padding-block: 4rem; }
+
+    header {
+      background: var(--accent);
+      color: #fff;
+    }
+    header h1 span { color: var(--accent-light); }
+
+    .criteria-grid, .advice-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    @media (min-width: 40rem) {
+      .criteria-grid { grid-template-columns: repeat(3, 1fr); }
+      .advice-grid   { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Subtle card look */
+    .card {
+      border: 1px solid var(--accent-light);
+      border-radius: .75rem;
+      padding: 1.75rem 1.5rem;
+      background: #fff;
+      box-shadow: 0 2px 4px hsl(var(--brand-hue) 60% 80% / .15);
+    }
+
+    footer {
+      text-align: center;
+      font-size: .9rem;
+      background: var(--accent-dark);
+      color: #eee;
+    }
+    footer a { color: var(--accent-light); text-decoration: underline; }
+  </style>
+</head>
+
+<body>
+  <!-- =============== HERO =============== -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="contrast" aria-label="Home">
+          <!-- Replace with your PNG/SVG -->
+          <img src="logo.svg" alt="Stage Zero VC logo" style="height:2.2rem"/>
+        </a>
+        <ul>
+          <li><a href="#invest">Who We Invest In</a></li>
+          <li><a href="#advise">How We Advise</a></li>
+          <li><a href="#contact" role="button" class="secondary">Get in Touch</a></li>
+        </ul>
+      </nav>
+
+      <h1 style="margin-top:5rem">
+        Turning <span>zero</span> into <span>win</span>
+      </h1>
+      <p class="lead">
+        Stage Zero VC backs founders at idea — before revenue, before traction.<br/>
+        If you have conviction, vision, and a world-class team, we’re your first believer.
+      </p>
+      <p><a href="#invest" role="button">Explore our thesis</a></p>
+    </div>
+  </header>
+
+  <!-- =============== WHO WE INVEST IN =============== -->
+  <section id="invest">
+    <div class="container">
+      <h2>Who We Invest In</h2>
+      <p class="lead">Stage-agnostic? Not us. We live at Day 0.</p>
+
+      <div class="criteria-grid">
+        <div class="card">
+          <h3>Idea-Stage Visionaries</h3>
+          <p>Founders challenging entrenched markets with 10× better solutions.</p>
+        </div>
+        <div class="card">
+          <h3>Formed but Pre-Revenue</h3>
+          <p>Teams who’ve shipped an MVP or prototype and are ready to sprint.</p>
+        </div>
+        <div class="card">
+          <h3>Moats in the Making</h3>
+          <p>Deep tech, unique data loops, or unfair distribution angles that scale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== HOW WE ADVISE =============== -->
+  <section id="advise" style="background:var(--accent-light)">
+    <div class="container">
+      <h2>How We Advise</h2>
+      <p class="lead">Capital is a commodity. Conviction &amp; sweat matter.</p>
+
+      <div class="advice-grid">
+        <div class="card">
+          <h3>Product &amp; GTM Sprints</h3>
+          <p>Weekly deep-dives with our operating partners to sharpen roadmap and storytelling.</p>
+        </div>
+        <div class="card">
+          <h3>Founder Mental Model</h3>
+          <p>Tactical coaching on founder-market fit, team culture, and early hiring.</p>
+        </div>
+        <div class="card">
+          <h3>Fundraising Prep</h3>
+          <p>Warm intros, deck refinement, and mock pitches to accelerate Seed &amp; beyond.</p>
+        </div>
+        <div class="card">
+          <h3>Operator Network</h3>
+          <p>Instant access to domain experts and the Stage Zero guild of portfolio founders.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== CONTACT =============== -->
+  <section id="contact">
+    <div class="container">
+      <h2>Let’s Talk</h2>
+      <p class="lead">
+        Building something the world doesn’t believe in yet?<br/>
+        We’d love to be your first yes.
+      </p>
+      <form action="https://formspree.io/f/your-endpoint" method="post">
+        <div class="grid">
+          <input type="text" name="name" placeholder="Your name" required>
+          <input type="email" name="email" placeholder="Your email" required>
+        </div>
+        <textarea name="message" placeholder="Tell us about your moonshot…" rows="4" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- =============== FOOTER =============== -->
+  <footer>
+    <p>© <span id="yr"></span> Stage Zero VC. All rights reserved. · <a href="mailto:hello@stagezero.win">hello@stagezero.win</a></p>
+  </footer>
+
+  <script>
+    // Simple year auto-update
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
