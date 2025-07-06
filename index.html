@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -10,22 +10,33 @@
     :root {
       --brand-hue: 215;
       --accent: hsl(var(--brand-hue) 70% 52%);
-      --accent-light: hsl(var(--brand-hue) 70% 95%);
-      --accent-dark: hsl(var(--brand-hue) 70% 20%);
+      --accent-light: hsl(var(--brand-hue) 70% 25%);
+      --accent-dark: hsl(var(--brand-hue) 70% 10%);
     }
 
-    header, section, footer { padding-block: 4rem; }
+    body {
+      background: #0c1118;
+      color: #f2f3f4;
+    }
+
+    header, section, footer {
+      padding-block: 4rem;
+    }
 
     header {
       background: var(--accent);
       color: #fff;
     }
-    header h1 span { color: var(--accent-light); }
+
+    header h1 span {
+      color: var(--accent-light);
+    }
 
     .criteria-grid, .advice-grid {
       display: grid;
       gap: 1.5rem;
     }
+
     @media (min-width: 40rem) {
       .criteria-grid { grid-template-columns: repeat(3, 1fr); }
       .advice-grid   { grid-template-columns: repeat(2, 1fr); }
@@ -35,8 +46,8 @@
       border: 1px solid var(--accent-light);
       border-radius: .75rem;
       padding: 1.75rem 1.5rem;
-      background: #fff;
-      box-shadow: 0 2px 4px hsl(var(--brand-hue) 60% 80% / .15);
+      background: #1a1f29;
+      box-shadow: 0 2px 4px hsl(var(--brand-hue) 60% 20% / .25);
     }
 
     footer {
@@ -45,7 +56,18 @@
       background: var(--accent-dark);
       color: #eee;
     }
-    footer a { color: var(--accent-light); text-decoration: underline; }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .logo-wrap {
+      background: #fff;
+      padding: 0.25rem 0.5rem;
+      border-radius: 6px;
+      display: inline-block;
+    }
   </style>
 </head>
 
@@ -55,7 +77,9 @@
     <div class="container">
       <nav>
         <a href="#" class="contrast" aria-label="Home">
-          <img src="images/logo.png" alt="Stage Zero VC logo" style="height:2.2rem"/>
+          <span class="logo-wrap">
+            <img src="images/logo.png" alt="Stage Zero VC logo" style="height:2.2rem"/>
+          </span>
         </a>
         <ul>
           <li><a href="#invest">Who We Invest In</a></li>
@@ -75,49 +99,48 @@
     </div>
   </header>
 
-  <!-- =============== VISION SECTION =============== -->
-<section id="vision" style="background: var(--accent-light);">
-  <div class="container">
-    <h2>Our Vision</h2>
-    <p class="lead">
-      We fund only the earliest — pre-revenue, pre-seed, pre-traction — and only when founders are ready to be sharpened, not just funded.
-    </p>
-
-    <div class="card">
-      <h3>We Invest at Day Zero</h3>
-      <p>
-        Stage Zero VC backs startups before the world believes — before revenue, before users, and sometimes before product. 
-        If you're at Day 0 with bold conviction and raw ambition, we’ll help you shape that into a company worth building.
+  <!-- VISION -->
+  <section id="vision">
+    <div class="container">
+      <h2>Our Vision</h2>
+      <p class="lead">
+        We fund only the earliest — pre-revenue, pre-seed, pre-traction — and only when founders are ready to be sharpened, not just funded.
       </p>
-    </div>
 
-    <div class="card">
-      <h3>We Don't Fund Passengers</h3>
-      <p>
-        We’re not interested in anything beyond pre-seed. We say no to polish, ego, and safe ideas. 
-        We say yes to resilience, vision, and founders willing to be challenged. 
-        Our capital comes with advice — and the two are inseparable.
-      </p>
-    </div>
+      <div class="card">
+        <h3>We Invest at Day Zero</h3>
+        <p>
+          Stage Zero VC backs startups before the world believes — before revenue, before users, and sometimes before product. 
+          If you're at Day 0 with bold conviction and raw ambition, we’ll help you shape that into a company worth building.
+        </p>
+      </div>
 
-    <div class="card">
-      <h3>We Fix What’s Broken</h3>
-      <p>
-        The startup ecosystem in Australia is shy, underbuilt, and often visionless. Too many chase funding without clarity or courage. 
-        We’re here to flip that — by helping founders develop real vision and execute with focus.
-      </p>
-    </div>
+      <div class="card">
+        <h3>We Don't Fund Passengers</h3>
+        <p>
+          We’re not interested in anything beyond pre-seed. We say no to polish, ego, and safe ideas. 
+          We say yes to resilience, vision, and founders willing to be challenged. 
+          Our capital comes with advice — and the two are inseparable.
+        </p>
+      </div>
 
-    <div class="card">
-      <h3>We Shape Founders</h3>
-      <p>
-        You don’t pitch us a fairytale — you bring us your willingness to build something meaningful. 
-        If you accept our challenge, we’ll help you turn zero into win. But only if you commit.
-      </p>
-    </div>
-  </div>
-</section>
+      <div class="card">
+        <h3>We Fix What’s Broken</h3>
+        <p>
+          The startup ecosystem in Australia is shy, underbuilt, and often visionless. Too many chase funding without clarity or courage. 
+          We’re here to flip that — by helping founders develop real vision and execute with focus.
+        </p>
+      </div>
 
+      <div class="card">
+        <h3>We Shape Founders</h3>
+        <p>
+          You don’t pitch us a fairytale — you bring us your willingness to build something meaningful. 
+          If you accept our challenge, we’ll help you turn zero into win. But only if you commit.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <!-- WHO WE INVEST IN -->
   <section id="invest">
@@ -143,7 +166,7 @@
   </section>
 
   <!-- HOW WE ADVISE -->
-  <section id="advise" style="background:var(--accent-light)">
+  <section id="advise">
     <div class="container">
       <h2>How We Advise</h2>
       <p class="lead">Capital is a commodity. Conviction &amp; sweat matter.</p>
